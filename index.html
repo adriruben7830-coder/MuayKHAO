@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Muay Khao Reus — Escuela de Muay Thai y Kickboxing en Reus. Clases para todos los niveles. Entrena con los mejores."/>
+<meta name="keywords" content="muay thai reus, kickboxing reus, artes marciales reus, muay khao"/>
+<meta property="og:title" content="Muay Khao Reus — Escuela de Muay Thai & Kickboxing"/>
+<meta property="og:description" content="Escuela de Muay Thai y Kickboxing en Reus. Todos los niveles. Clases grupales, infantiles y personales."/>
+<meta property="og:type" content="website"/>
+<title>Muay Khao Reus | Escuela de Muay Thai & Kickboxing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --navy-light: #162554;
+    --gold: #c9920a;
+    --gold-light: #e8b820;
+    --gold-pale: #f5e199;
+    --red: #c0251a;
+    --red-light: #e03020;
+    --white: #f8f6f0;
+    --gray: #9a9a9a;
+    --gray-light: #e8e4dc;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--white);
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,27,62,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 4rem;
+  }
+
+  .nav-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(248,246,240,0.6);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold-light);
+    border: none;
+    padding: 0.65rem 1.6rem;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold-pale);
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  #inicio {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 4rem 5rem;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,146,10,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,146,10,0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .hero-glow-left {
+    position: absolute;
+    left: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192,37,26,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-glow-right {
+    position: absolute;
+    right: -100px; top: 30%;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,146,10,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .hero-h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+  }
+
+  .hero-h1 .accent { color: var(--red-light); }
+
+  .hero-tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(248,246,240,0.6);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold-light);
+    border: 2px solid var(--gold-light);
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.25s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-pale);
+    border-color: var(--gold-pale);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: transparent;
+    border: 2px solid rgba(248,246,240,0.3);
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+  }
+
+  /* SHIELD SVG */
+  .hero-shield {
+    width: 280px;
+    height: 280px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 40px rgba(201,146,10,0.3));
+    animation: shield-float 5s ease-in-out infinite;
+  }
+
+  @keyframes shield-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* STATS ROW */
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,146,10,0.2);
+  }
+
+  .stat-item { text-align: left; }
+
+  .stat-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(248,246,240,0.4);
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 6rem 4rem; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-title .red { color: var(--red); }
+
+  .max-w {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── SOBRE NOSOTROS ── */
+  #nosotros {
+    background: #f0ece2;
+  }
+
+  .nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .nosotros-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 1.2rem;
+  }
+
+  .quote-block {
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(201,146,10,0.06);
+  }
+
+  .quote-block p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--navy);
+    margin: 0 !important;
+  }
+
+  .quote-block cite {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  .nosotros-visual {
+    background: var(--navy);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nosotros-visual::before {
+    content: 'ท';
+    position: absolute;
+    top: -20px; right: 20px;
+    font-size: 12rem;
+    color: rgba(201,146,10,0.08);
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .values-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .values-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: rgba(248,246,240,0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .value-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CLASES ── */
+  #clases {
+    background: var(--navy);
+  }
+
+  #clases .section-title { color: var(--white); }
+
+  .clases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .clase-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(201,146,10,0.2);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .clase-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .clase-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .clase-card.red::before { background: var(--red); }
+
+  .clase-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(201,146,10,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .clase-card.red .clase-num { color: rgba(192,37,26,0.2); }
+
+  .clase-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .clase-sub {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .clase-card.red .clase-sub { color: var(--red-light); }
+
+  .clase-desc {
+    font-size: 0.9rem;
+    color: rgba(248,246,240,0.5);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .clase-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .clase-features li {
+    font-size: 0.85rem;
+    color: rgba(248,246,240,0.65);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .clase-features li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.75rem;
+  }
+
+  .clase-card.red .clase-features li::before { color: var(--red-light); }
+
+  /* ── ENTRENADORES ── */
+  #entrenadores { background: var(--white); }
+
+  .coaches-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .coach-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem;
+    border: 1px solid var(--gray-light);
+    background: #f8f5ee;
+    transition: border-color 0.3s;
+  }
+
+  .coach-card:hover { border-color: var(--gold); }
+
+  .coach-avatar {
+    width: 120px;
+    height: 140px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .coach-avatar-initials {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .coach-avatar::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .coach-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+  }
+
+  .coach-role {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0.3rem 0 1rem;
+  }
+
+  .coach-bio {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* ── HORARIOS & PRECIOS ── */
+  #horarios { background: #f0ece2; }
+
+  .hp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .horario-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .horario-table th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--navy);
+    padding: 0.8rem 1rem;
+    text-align: left;
+  }
+
+  .horario-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--gray-light);
+    color: #444;
+  }
+
+  .horario-table tr:nth-child(even) td { background: rgba(13,27,62,0.03); }
+
+  .tag-muay {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold-light);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.3rem;
+  }
+
+  .tag-kick {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.3rem;
+  }
+
+  .precios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .precio-card {
+    padding: 1.8rem 2rem;
+    border: 1px solid var(--gray-light);
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.3s;
+  }
+
+  .precio-card:hover { border-color: var(--gold); }
+
+  .precio-card.featured {
+    border: 2px solid var(--gold);
+    background: var(--navy);
+  }
+
+  .precio-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+  }
+
+  .precio-card.featured .precio-name { color: var(--white); }
+
+  .precio-sub {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 0.2rem;
+  }
+
+  .precio-card.featured .precio-sub { color: rgba(248,246,240,0.5); }
+
+  .precio-amount {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: right;
+  }
+
+  .precio-period {
+    font-size: 0.7rem;
+    color: var(--gray);
+    display: block;
+    text-align: right;
+  }
+
+  .precio-card.featured .precio-period { color: rgba(248,246,240,0.4); }
+
+  .precio-note {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(201,146,10,0.08);
+    border-left: 3px solid var(--gold);
+  }
+
+  /* ── TIENDA ── */
+  #tienda { background: var(--navy); }
+  #tienda .section-title { color: var(--white); }
+  #tienda .section-label { color: var(--gold); }
+
+  .tienda-intro {
+    font-size: 0.95rem;
+    color: rgba(248,246,240,0.5);
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .producto-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(201,146,10,0.15);
+    padding: 0;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .producto-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .producto-img {
+    width: 100%;
+    height: 160px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .producto-img svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.7;
+  }
+
+  .producto-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .producto-info {
+    padding: 1.2rem;
+  }
+
+  .producto-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  .producto-desc {
+    font-size: 0.8rem;
+    color: rgba(248,246,240,0.4);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .producto-cta {
+    display: block;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold);
+    border: none;
+    padding: 0.7rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.25s;
+  }
+
+  .producto-cta:hover { background: var(--gold-light); }
+
+  /* ── TESTIMONIOS ── */
+  #testimonios { background: var(--white); }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testi-card {
+    padding: 2rem;
+    border: 1px solid var(--gray-light);
+    background: #f8f5ee;
+    position: relative;
+  }
+
+  .testi-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .testi-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .testi-author {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--navy);
+  }
+
+  .testi-google {
+    font-size: 0.65rem;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── CONTACTO ── */
+  #contacto { background: var(--navy); }
+  #contacto .section-title { color: var(--white); }
+  #contacto .section-label { color: var(--gold); }
+
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+  }
+
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .info-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(201,146,10,0.15);
+    border: 1px solid var(--gold);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold-light);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .info-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    color: rgba(248,246,240,0.8);
+    line-height: 1.5;
+  }
+
+  .info-value a {
+    color: rgba(248,246,240,0.8);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .info-value a:hover { color: var(--gold-light); }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .social-btn:hover {
+    border-color: var(--gold);
+    background: rgba(201,146,10,0.1);
+  }
+
+  /* FORM */
+  .contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(248,246,240,0.5);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,146,10,0.2);
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    outline: none;
+    transition: border-color 0.25s;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group select option { background: var(--navy); }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--gold-light);
+    border: none;
+    padding: 1.1rem 2rem;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-pale);
+    transform: translateY(-2px);
+  }
+
+  .whatsapp-cta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(37,211,102,0.1);
+    border: 1px solid rgba(37,211,102,0.3);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: background 0.25s;
+  }
+
+  .whatsapp-cta:hover { background: rgba(37,211,102,0.15); }
+
+  .whatsapp-cta svg {
+    width: 28px; height: 28px;
+    fill: #25d366;
+    flex-shrink: 0;
+  }
+
+  .whatsapp-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #25d366;
+  }
+
+  .whatsapp-sub {
+    font-size: 0.75rem;
+    color: rgba(248,246,240,0.4);
+    display: block;
+  }
+
+  /* MAPA */
+  .mapa-wrap {
+    margin-top: 3rem;
+    border: 2px solid rgba(201,146,10,0.2);
+    overflow: hidden;
+    height: 300px;
+    background: var(--navy-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mapa-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: invert(90%) hue-rotate(180deg);
+    opacity: 0.85;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070e20;
+    border-top: 2px solid var(--gold);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-logo span { color: var(--gold-light); }
+
+  .footer-legal {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-legal a {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(248,246,240,0.35);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .footer-legal a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(248,246,240,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── BANNER CTA ── */
+  .cta-banner {
+    background: var(--red);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-banner-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .cta-banner-text span { color: var(--gold-pale); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #inicio { padding: 6rem 1.5rem 4rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-shield { width: 180px; height: 180px; margin: 0 auto; }
+    .nosotros-grid,
+    .coaches-grid,
+    .hp-grid,
+    .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .clases-grid { grid-template-columns: 1fr; }
+    .tienda-grid { grid-template-columns: repeat(2, 1fr); }
+    .testi-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .cta-banner { flex-direction: column; text-align: center; }
+    nav { padding: 0.8rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     NAVBAR
+════════════════════════════════════ -->
+<nav>
+  <a href="#inicio" class="nav-logo">Muay <span>Khao</span> Reus</a>
+  <ul class="nav-links">
+    <li><a href="#clases">Clases</a></li>
+    <li><a href="#entrenadores">Entrenadores</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#tienda">Tienda</a></li>
+    <li><a href="#testimonios">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20más%20información" class="nav-cta" target="_blank">Prueba gratis</a>
+</nav>
+
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section id="inicio">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow-left"></div>
+  <div class="hero-glow-right"></div>
+  <div class="hero-inner max-w">
+    <div class="hero-text">
+      <div class="hero-label">Reus · Tarragona · España</div>
+      <h1 class="hero-h1">Muay Thai<br/><span class="accent">&amp; Kickboxing</span></h1>
+      <p class="hero-tagline">100% Auténtico · Todos los niveles</p>
+      <p class="hero-desc">
+        Entrena con los mejores instructores de la zona. Clases para niños, adultos y competidores. 
+        Descubre la disciplina, la fuerza y el espíritu del arte de los ocho miembros.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20una%20clase%20de%20prueba%20gratis" class="btn-primary" target="_blank">Clase de prueba gratis</a>
+        <a href="#clases" class="btn-outline">Ver clases</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Años experiencia</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4.9★</span>
+          <span class="stat-label">Google Reviews</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">WBC</span>
+          <span class="stat-label">Afiliados</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">9-22h</span>
+          <span class="stat-label">Horario amplio</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHIELD / LOGO PLACEHOLDER -->
+    <div style="display:flex;align-items:center;justify-content:center;">
+      <svg class="hero-shield" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#162554"/>
+            <stop offset="100%" stop-color="#0d1b3e"/>
+          </linearGradient>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#e8b820"/>
+            <stop offset="100%" stop-color="#c9920a"/>
+          </linearGradient>
+        </defs>
+        <!-- Shield shape -->
+        <path d="M100 8 L188 45 L188 130 Q188 195 100 232 Q12 195 12 130 L12 45 Z" fill="url(#shieldGrad)" stroke="#c9920a" stroke-width="3"/>
+        <path d="M100 22 L176 55 L176 130 Q176 188 100 218 Q24 188 24 130 L24 55 Z" fill="none" stroke="rgba(201,146,10,0.3)" stroke-width="1"/>
+        <!-- Stars top -->
+        <text x="100" y="58" text-anchor="middle" font-size="11" fill="#e8b820" letter-spacing="8">★ ★ ★</text>
+        <!-- Gloves icon -->
+        <g transform="translate(100,120)">
+          <!-- Left glove -->
+          <ellipse cx="-22" cy="0" rx="18" ry="22" fill="#c0251a" stroke="#e8b820" stroke-width="1.5"/>
+          <rect x="-36" y="-8" width="14" height="20" rx="3" fill="#c0251a" stroke="#e8b820" stroke-width="1"/>
+          <line x1="-30" y1="-8" x2="-30" y2="12" stroke="#e8b820" stroke-width="0.8" opacity="0.5"/>
+          <!-- Right glove -->
+          <ellipse cx="22" cy="0" rx="18" ry="22" fill="#c0251a" stroke="#e8b820" stroke-width="1.5"/>
+          <rect x="22" y="-8" width="14" height="20" rx="3" fill="#c0251a" stroke="#e8b820" stroke-width="1"/>
+          <line x1="30" y1="-8" x2="30" y2="12" stroke="#e8b820" stroke-width="0.8" opacity="0.5"/>
+          <!-- Mongkon / diadem arc -->
+          <path d="M -38 -30 Q 0 -55 38 -30" fill="none" stroke="#e8b820" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="-38" cy="-30" r="4" fill="#e8b820"/>
+          <circle cx="38" cy="-30" r="4" fill="#e8b820"/>
+          <circle cx="0" cy="-52" r="5" fill="#e8b820"/>
+        </g>
+        <!-- Text bottom -->
+        <text x="100" y="190" text-anchor="middle" font-family="Oswald,sans-serif" font-size="10" font-weight="700" fill="url(#goldGrad)" letter-spacing="3">MUAY KHAO</text>
+        <text x="100" y="205" text-anchor="middle" font-family="Oswald,sans-serif" font-size="8" fill="rgba(201,146,10,0.6)" letter-spacing="4">REUS</text>
+        <!-- Thai script decoration -->
+        <text x="100" y="175" text-anchor="middle" font-size="9" fill="rgba(201,146,10,0.4)" letter-spacing="2">มวยเข่าเรอุส</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SOBRE NOSOTROS
+════════════════════════════════════ -->
+<section id="nosotros">
+  <div class="max-w">
+    <div class="nosotros-grid">
+      <div class="nosotros-text reveal">
+        <div class="section-label">Nuestra escuela</div>
+        <h2 class="section-title">El Muay Thai<br/><span class="red">es un estilo de vida</span></h2>
+        <p>Muay Khao Reus es mucho más que un gimnasio. Somos una comunidad de luchadores, familias y personas que comparten la pasión por el arte de los ocho miembros, arraigado en la cultura tailandesa y reconocido en todo el mundo.</p>
+        <p>Tanto si buscas ponerte en forma, aprender defensa personal, o competir a nivel profesional, aquí encontrarás el ambiente, los entrenadores y la metodología para alcanzar tu máximo potencial.</p>
+        <div class="quote-block">
+          <p>"Lo importante no es cómo caes, sino cómo te levantas"</p>
+          <cite>— Buakaw Banchamek, legendario luchador de Muay Thai</cite>
+        </div>
+        <a href="#contacto" class="btn-primary" style="margin-top:1rem;display:inline-block;">Únete a la comunidad</a>
+      </div>
+      <div class="nosotros-visual reveal">
+        <ul class="values-list">
+          <li>
+            <div class="value-icon">01</div>
+            <div>
+              <strong style="color:var(--gold-light);display:block;margin-bottom:0.3rem;font-size:0.95rem;">Tradición auténtica</strong>
+              Enseñamos el Muay Thai original con respeto a sus raíces culturales y espirituales tailandesas.
+            </div>
+          </li>
+          <li>
+            <div class="value-icon">02</div>
+            <div>
+              <strong style="color:var(--gold-light);display:block;margin-bottom:0.3rem;font-size:0.95rem;">Todos los niveles</strong>
+              Desde el primer día hasta la competición. Niños desde 6 años, adultos y preparación para combate.
+            </div>
+          </li>
+          <li>
+            <div class="value-icon">03</div>
+            <div>
+              <strong style="color:var(--gold-light);display:block;margin-bottom:0.3rem;font-size:0.95rem;">Ambiente familiar</strong>
+              Más de 30 reseñas 5 estrellas en Google. El compañerismo y el respeto son nuestra seña de identidad.
+            </div>
+          </li>
+          <li>
+            <div class="value-icon">04</div>
+            <div>
+              <strong style="color:var(--gold-light);display:block;margin-bottom:0.3rem;font-size:0.95rem;">Afiliados WBC Muay Thai</strong>
+              Competidores activos en circuitos nacionales e internacionales. Formación profesional de calidad contrastada.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CLASES
+════════════════════════════════════ -->
+<section id="clases">
+  <div class="max-w">
+    <div class="section-label" style="color:var(--gold);">Lo que ofrecemos</div>
+    <h2 class="section-title" style="color:var(--white);">Nuestras <span class="red">clases</span></h2>
+    <div class="clases-grid">
+      <div class="clase-card reveal">
+        <div class="clase-num">01</div>
+        <div class="clase-name">Muay Thai Infantil</div>
+        <div class="clase-sub">6 a 12 años</div>
+        <p class="clase-desc">Iniciación al arte tailandés adaptada para los más pequeños. Disciplina, respeto y condición física de forma divertida.</p>
+        <ul class="clase-features">
+          <li>Técnicas de golpeo básicas</li>
+          <li>Juegos de coordinación Muay Thai</li>
+          <li>Acondicionamiento físico adaptado</li>
+          <li>Técnicas de defensa personal</li>
+          <li>30% descuento segundo familiar</li>
+        </ul>
+      </div>
+      <div class="clase-card reveal">
+        <div class="clase-num">02</div>
+        <div class="clase-name">Muay Thai Adultos</div>
+        <div class="clase-sub">Desde 12 años · Todos los niveles</div>
+        <p class="clase-desc">Clases grupales con metodología progresiva. Desde principiante hasta preparación para competición.</p>
+        <ul class="clase-features">
+          <li>Técnicas avanzadas de golpeo</li>
+          <li>Defensa y contraataque</li>
+          <li>Sparring controlado</li>
+          <li>Trabajo en equipo y liderazgo</li>
+          <li>Preparación para competición</li>
+        </ul>
+      </div>
+      <div class="clase-card red reveal">
+        <div class="clase-num">03</div>
+        <div class="clase-name">Kickboxing</div>
+        <div class="clase-sub">Adultos · Todos los niveles</div>
+        <p class="clase-desc">K1 y Kickboxing con Manu Vicente. Técnica depurada, potencia y velocidad. Ideal para quienes buscan variedad de estilos.</p>
+        <ul class="clase-features">
+          <li>Técnica de puños y patadas K1</li>
+          <li>Combinaciones y timing</li>
+          <li>Acondicionamiento físico</li>
+          <li>Competición amateur y semi-pro</li>
+        </ul>
+      </div>
+      <div class="clase-card reveal">
+        <div class="clase-num">04</div>
+        <div class="clase-name">Clases Personales</div>
+        <div class="clase-sub">Entrenamiento 1 a 1</div>
+        <p class="clase-desc">Atención exclusiva adaptada a tus objetivos. Máxima progresión en el mínimo tiempo con los mejores entrenadores.</p>
+        <ul class="clase-features">
+          <li>Sesiones personalizadas</li>
+          <li>Horario flexible</li>
+          <li>Plan de entrenamiento individual</li>
+          <li>Packs de 1, 5 o 10 clases</li>
+        </ul>
+      </div>
+      <div class="clase-card reveal" style="grid-column: span 2;">
+        <div class="clase-num">+</div>
+        <div class="clase-name">Prueba una clase sin compromiso</div>
+        <div class="clase-sub">Primera clase gratis para nuevos alumnos</div>
+        <p class="clase-desc">No necesitas equipación ni experiencia previa. Ven tal y como eres y descubre si el Muay Thai es para ti. Te esperamos.</p>
+        <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20apuntarme%20a%20una%20clase%20de%20prueba%20gratis" class="btn-primary" target="_blank" style="margin-top:1rem;display:inline-block;">Reservar clase de prueba</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     ENTRENADORES
+════════════════════════════════════ -->
+<section id="entrenadores">
+  <div class="max-w">
+    <div class="section-label">El equipo</div>
+    <h2 class="section-title">Entrena con los <span class="red">mejores</span></h2>
+    <div class="coaches-grid">
+      <div class="coach-card reveal">
+        <div class="coach-avatar">
+          <span class="coach-avatar-initials">VG</span>
+        </div>
+        <div>
+          <div class="coach-name">Víctor García</div>
+          <div class="coach-role">Entrenador de Muay Thai · Head Coach</div>
+          <p class="coach-bio">Senior Muay Khao con más de 10 años de experiencia en la enseñanza y práctica del Muay Thai. Múltiples campeonatos y formación directa en Tailandia. Metodología que combina tradición tailandesa con pedagogía moderna.</p>
+        </div>
+      </div>
+      <div class="coach-card reveal">
+        <div class="coach-avatar" style="border-bottom-color:var(--red);">
+          <span class="coach-avatar-initials" style="color:var(--red-light);">MV</span>
+        </div>
+        <div>
+          <div class="coach-name">Manu Vicente</div>
+          <div class="coach-role" style="color:var(--red);">Entrenador de Kickboxing · K1</div>
+          <p class="coach-bio">Especialista en Kickboxing y K1 con amplia trayectoria en competición. Entrena a alumnos de todos los niveles con un enfoque técnico y progresivo que garantiza resultados reales desde la primera sesión.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     HORARIOS & PRECIOS
+════════════════════════════════════ -->
+<section id="horarios">
+  <div class="max-w">
+    <div class="section-label">Organízate</div>
+    <h2 class="section-title">Horarios <span class="red">&amp; Precios</span></h2>
+    <div class="hp-grid">
+      <div class="reveal">
+        <h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--navy);margin-bottom:1.5rem;">Horario semanal</h3>
+        <table class="horario-table">
+          <thead>
+            <tr><th>Franja horaria</th><th>Lun — Vie</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>09:00</td><td><span class="tag-muay">Muay Thai</span></td></tr>
+            <tr><td>10:00</td><td><span class="tag-muay">Muay Thai</span></td></tr>
+            <tr><td>16:30</td><td><span class="tag-muay">Muay Thai</span></td></tr>
+            <tr><td>17:30</td><td><span class="tag-muay">Muay Thai</span></td></tr>
+            <tr><td>18:30</td><td><span class="tag-kick">Kickboxing</span></td></tr>
+            <tr><td>19:30</td><td><span class="tag-muay">Muay Thai</span></td></tr>
+            <tr><td>20:30</td><td><span class="tag-kick">Kickboxing</span></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.8rem;color:var(--gray);margin-top:1rem;">Horario completo: 9:00 a 22:00h · Clases personales con horario flexible</p>
+        <p style="font-size:0.8rem;color:var(--gray);margin-top:0.3rem;">Consulta disponibilidad por WhatsApp</p>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--navy);margin-bottom:1.5rem;">Tarifas mensuales</h3>
+        <div class="precios-list">
+          <div class="precio-card">
+            <div>
+              <div class="precio-name">Infantil</div>
+              <div class="precio-sub">6 a 12 años</div>
+            </div>
+            <div>
+              <div class="precio-amount">45€</div>
+              <span class="precio-period">/ mes</span>
+            </div>
+          </div>
+          <div class="precio-card featured">
+            <div>
+              <div class="precio-name">Adultos</div>
+              <div class="precio-sub">Desde 12 años · Más popular</div>
+            </div>
+            <div>
+              <div class="precio-amount">50€</div>
+              <span class="precio-period" style="color:rgba(248,246,240,0.4);">/ mes</span>
+            </div>
+          </div>
+          <div class="precio-card">
+            <div>
+              <div class="precio-name">Clase personal</div>
+              <div class="precio-sub">1 sesión</div>
+            </div>
+            <div>
+              <div class="precio-amount">25€</div>
+              <span class="precio-period">/ clase</span>
+            </div>
+          </div>
+          <div class="precio-card">
+            <div>
+              <div class="precio-name">Bono 5 clases</div>
+              <div class="precio-sub">Canjeable cuando prefieras</div>
+            </div>
+            <div>
+              <div class="precio-amount">115€</div>
+              <span class="precio-period">/ bono</span>
+            </div>
+          </div>
+          <div class="precio-card">
+            <div>
+              <div class="precio-name">Bono 10 clases</div>
+              <div class="precio-sub">Mejor precio por sesión</div>
+            </div>
+            <div>
+              <div class="precio-amount">200€</div>
+              <span class="precio-period">/ bono</span>
+            </div>
+          </div>
+        </div>
+        <p class="precio-note">30% de descuento para el segundo miembro familiar. Consulta condiciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TIENDA
+════════════════════════════════════ -->
+<section id="tienda">
+  <div class="max-w">
+    <div class="section-label">Equipación oficial</div>
+    <h2 class="section-title" style="color:var(--white);">Tienda <span class="red">Muay Khao</span></h2>
+    <p class="tienda-intro">Equipación oficial del gimnasio. Para comprar, contacta directamente por WhatsApp o en el gimnasio.</p>
+    <div class="tienda-grid">
+
+      <div class="producto-card reveal">
+        <div class="producto-img">
+          <!-- Pantalon icon -->
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 10 L30 10 L40 45 L50 10 L65 10 L65 70 L50 70 L40 40 L30 70 L15 70 Z" fill="none" stroke="#c9920a" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="15" y1="10" x2="65" y2="10" stroke="#c9920a" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="producto-info">
+          <div class="producto-name">Pantalón Muay Thai</div>
+          <p class="producto-desc">Pantalón oficial del gimnasio. Tejido ligero, diseño tradicional tailandés.</p>
+          <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20información%20sobre%20el%20pantalón%20de%20Muay%20Thai" class="producto-cta" target="_blank">Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="producto-card reveal">
+        <div class="producto-img">
+          <!-- Guantes icon -->
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="40" cy="38" rx="22" ry="26" fill="none" stroke="#c0251a" stroke-width="2"/>
+            <rect x="26" y="50" width="28" height="18" rx="4" fill="none" stroke="#c0251a" stroke-width="2"/>
+            <line x1="26" y1="50" x2="54" y2="50" stroke="#c9920a" stroke-width="1.5"/>
+            <line x1="28" y1="42" x2="52" y2="42" stroke="#c9920a" stroke-width="1" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="producto-info">
+          <div class="producto-name">Guantes de Boxeo</div>
+          <p class="producto-desc">Guantes profesionales homologados. Disponibles en varios pesos y tallas.</p>
+          <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20información%20sobre%20los%20guantes" class="producto-cta" target="_blank">Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="producto-card reveal">
+        <div class="producto-img">
+          <!-- Vendas icon -->
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 40 Q30 20 50 25 Q65 30 60 45 Q55 60 40 58 Q25 56 20 40Z" fill="none" stroke="#c9920a" stroke-width="2"/>
+            <path d="M25 38 Q35 55 50 50" fill="none" stroke="#c9920a" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <path d="M18 36 Q15 50 25 58" fill="none" stroke="#c9920a" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="producto-info">
+          <div class="producto-name">Vendas de Boxeo</div>
+          <p class="producto-desc">Vendas elásticas para protección de muñecas y nudillos. 4,5 metros.</p>
+          <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20información%20sobre%20las%20vendas" class="producto-cta" target="_blank">Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="producto-card reveal">
+        <div class="producto-img">
+          <!-- Bucal icon -->
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 35 Q20 25 40 25 Q60 25 60 35 L58 50 Q55 60 40 60 Q25 60 22 50 Z" fill="none" stroke="#c9920a" stroke-width="2"/>
+            <path d="M28 35 Q28 45 40 45 Q52 45 52 35" fill="none" stroke="#c9920a" stroke-width="1.5"/>
+            <line x1="40" y1="25" x2="40" y2="60" stroke="rgba(201,146,10,0.3)" stroke-width="1" stroke-dasharray="2,2"/>
+          </svg>
+        </div>
+        <div class="producto-info">
+          <div class="producto-name">Protector Bucal</div>
+          <p class="producto-desc">Protección dental de alta calidad. Imprescindible para sparring y competición.</p>
+          <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20información%20sobre%20el%20protector%20bucal" class="producto-cta" target="_blank">Consultar precio</a>
+        </div>
+      </div>
+
+    </div>
+    <p style="font-size:0.8rem;color:rgba(248,246,240,0.3);margin-top:2rem;text-align:center;">Equipación disponible en el gimnasio · Carrer Bonaventura Vallespinosa Salvat 6, Reus</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TESTIMONIOS
+════════════════════════════════════ -->
+<section id="testimonios">
+  <div class="max-w">
+    <div class="section-label">Lo que dicen</div>
+    <h2 class="section-title">Más de 30 reseñas <span class="red">5 estrellas</span></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Si de verdad te gusta el Muay Thai, este es tu gimnasio. Súper buen compañerismo, Víctor el Sensei espectacular en su forma de enseñar y una flexibilidad de horarios que seguro se adapta a tus necesidades."</p>
+        <div class="testi-author">Oscar C.</div>
+        <div class="testi-google">Google Review</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Muy buen sitio para aprender Muay Thai. Hay muy buen nivel, si eres principiante se acomodan a tu nivel, y hay buen rollo entre compañeros."</p>
+        <div class="testi-author">Jose M.</div>
+        <div class="testi-google">Google Review</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Trato individualizado y muy profesional. Un entrenador que ama el deporte y lo vive con pasión hace que lo vivas de una forma vibrante. Muy fan de MKR."</p>
+        <div class="testi-author">Jordi C.</div>
+        <div class="testi-google">Google Review</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Instalaciones en Winner Gym. Clases familiares y muy instructivas. Te ayuda a conocer la cultura y pasión del Muay Thai desde la primera clase. Muy recomendado."</p>
+        <div class="testi-author">Jordi A.</div>
+        <div class="testi-google">Google Review</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Más que un equipo, una familia. Gracias por enseñarnos tanto."</p>
+        <div class="testi-author">Claretta88</div>
+        <div class="testi-google">Google Review</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Buen gimnasio para practicar Muay Thai. El ambiente es muy familiar. Entrenador que se implica y con mucha experiencia."</p>
+        <div class="testi-author">Osilir</div>
+        <div class="testi-google">Google Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CTA BANNER
+════════════════════════════════════ -->
+<div class="cta-banner">
+  <div class="cta-banner-text">¿Listo para tu primera clase? <span>Es gratis.</span></div>
+  <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20apuntarme%20a%20una%20clase%20de%20prueba%20gratis" class="btn-primary" target="_blank" style="white-space:nowrap;">Reservar ahora por WhatsApp</a>
+</div>
+
+<!-- ════════════════════════════════════
+     CONTACTO
+════════════════════════════════════ -->
+<section id="contacto">
+  <div class="max-w">
+    <div class="section-label">Encuéntranos</div>
+    <h2 class="section-title" style="color:var(--white);">Contacto <span class="red">&amp; Ubicación</span></h2>
+    <div class="contacto-grid">
+      <div class="contacto-info reveal">
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <span class="info-label">Dirección</span>
+            <span class="info-value">Carrer Bonaventura Vallespinosa Salvat 6<br/>43204 Reus, Tarragona</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="info-label">Teléfono</span>
+            <span class="info-value"><a href="tel:+34632953530">+34 632 95 35 30</a></span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <span class="info-label">Horario</span>
+            <span class="info-value">Lunes a Viernes · 9:00 a 22:00h</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <span class="info-label">Redes sociales</span>
+            <div class="social-links">
+              <a href="https://www.instagram.com/muaykhaoreus.mt" class="social-btn" target="_blank">Instagram</a>
+              <a href="https://www.tiktok.com/@muaykhaoreus" class="social-btn" target="_blank">TikTok</a>
+              <a href="https://www.facebook.com/muaykhaoreus.faro" class="social-btn" target="_blank">Facebook</a>
+            </div>
+          </div>
+        </div>
+        <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20más%20información%20sobre%20las%20clases" class="whatsapp-cta" target="_blank">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <span class="whatsapp-text">Escríbenos por WhatsApp</span>
+            <span class="whatsapp-sub">Respuesta rápida · Sin compromiso</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="reveal">
+        <div class="contacto-form">
+          <h3 style="font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--white);margin-bottom:1rem;">O envíanos un mensaje</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name"/>
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label for="interes">Me interesa</label>
+            <select id="interes" name="interes">
+              <option value="">Selecciona una opción</option>
+              <option value="muay-adulto">Muay Thai Adultos</option>
+              <option value="muay-infantil">Muay Thai Infantil</option>
+              <option value="kickboxing">Kickboxing</option>
+              <option value="personal">Clases personales</option>
+              <option value="prueba">Clase de prueba gratis</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué buscas o cualquier pregunta que tengas..."></textarea>
+          </div>
+          <button type="button" class="form-submit" onclick="enviarFormulario()">Enviar mensaje</button>
+          <p style="font-size:0.75rem;color:rgba(248,246,240,0.3);margin-top:0.5rem;">
+            Al enviar aceptas nuestra <a href="#" style="color:var(--gold);text-decoration:none;">política de privacidad</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAPA -->
+    <div class="mapa-wrap reveal" style="margin-top:3rem;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.5!2d1.1046!3d41.1541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a147b9e6b0b0a1%3A0x1!2sCarrer+Bonaventura+Vallespinosa+Salvat+6%2C+43204+Reus!5e0!3m2!1ses!2ses!4v1"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación Muay Khao Reus">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Muay <span>Khao</span> Reus</div>
+  <div class="footer-legal">
+    <a href="#">Aviso legal</a>
+    <a href="#">Política de privacidad</a>
+    <a href="#">Política de cookies</a>
+    <a href="#">Declaración de accesibilidad</a>
+  </div>
+  <div class="footer-copy">© 2025 Muay Khao Reus · Diseño web por <strong style="color:rgba(248,246,240,0.5);">MØRK Studio</strong></div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.borderBottomColor = window.scrollY > 50 ? 'var(--gold)' : 'rgba(201,146,10,0.4)';
+  });
+
+  // Formulario — abre WhatsApp con los datos
+  function enviarFormulario() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const interes = document.getElementById('interes').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+    if (!nombre) { alert('Por favor, introduce tu nombre.'); return; }
+    const opciones = {
+      'muay-adulto': 'Muay Thai Adultos',
+      'muay-infantil': 'Muay Thai Infantil',
+      'kickboxing': 'Kickboxing',
+      'personal': 'Clases personales',
+      'prueba': 'Clase de prueba gratis'
+    };
+    let texto = `Hola, soy ${nombre}`;
+    if (interes) texto += ` y me interesa: ${opciones[interes] || interes}`;
+    if (telefono) texto += `. Mi teléfono: ${telefono}`;
+    if (mensaje) texto += `. ${mensaje}`;
+    window.open(`https://api.whatsapp.com/send?phone=34632953530&text=${encodeURIComponent(texto)}`, '_blank');
+  }
+
+  // Smooth nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--gold-light)' : '';
+    });
+  });
+</script>
+</body>
+</html>
