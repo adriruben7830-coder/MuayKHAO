@@ -10,7 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0d1b3e;--nl:#132354;--nd:#080f24;--gold:#c9920a;--gl:#e8b820;--red:#c0251a;--rl:#e03020;--teal:#20b2aa;--tl:#4dd9d0;--white:#f8f6f0;--gray:#8a8f9e}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.videos-nosotros{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+
 html,body{overflow-x:hidden;scroll-behavior:smooth;font-family:'Source Sans 3',sans-serif;background:var(--nd);color:var(--white)}
 
 /* ── NAV ── */
@@ -491,7 +492,7 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
     <!-- VÍDEOS: Respeto y Cuidado -->
     <div style="margin-top:3rem;">
       <div class="slb" style="margin-bottom:1rem;">El respeto dentro del tatami</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div class="videos-nosotros">
         <div style="position:relative;overflow:hidden;border:1px solid rgba(201,146,10,.2);">
           <video autoplay muted loop playsinline style="width:100%;display:block;height:480px;object-fit:cover;">
             <source src="videos/SALUDOFINAL.mp4" type="video/mp4">
@@ -1065,6 +1066,16 @@ function sf(){
   }
   .eqp { height:260px !important }
   .eqp img { height:100% !important; object-fit:cover !important }
+
+  /* VÍDEOS NOSOTROS — una columna en móvil */
+  .videos-nosotros {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.5rem;
+  }
+  .videos-nosotros video {
+    height:300px !important;
+  }
 
   /* ── HORARIO MÓVIL ── */
   /* Tabla con scroll horizontal para no recortar columnas */
