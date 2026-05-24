@@ -636,7 +636,7 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
           <div class="clname">Muay Thai Infantil</div>
           <div class="clsub">6 a 12 años</div>
           <p class="cldesc">Iniciación al arte tailandés para los más pequeños. Disciplina, respeto y condición física de forma divertida y segura.</p>
-          <ul class="clf"><li>Técnicas de golpeo básicas</li><li>Juegos de coordinación</li><li>Acondicionamiento físico adaptado</li><li>30% descuento segundo familiar</li></ul>
+          <ul class="clf"><li>Técnicas de golpeo básicas</li><li>Juegos de coordinación</li><li>Acondicionamiento físico adaptado</li><li>35% descuento segundo familiar</li></ul>
         </div>
       </div>
       <div class="clc">
@@ -675,6 +675,26 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
   <div class="mw">
     <div class="slb">Organízate</div>
     <h2 class="st">Horarios <span class="r">&amp; Precios</span></h2>
+
+    <!-- BANNER CAMBIO HORARIO -->
+    <div id="banner-horario" style="display:none;margin-bottom:2rem;position:relative;overflow:hidden;border:1px solid rgba(201,146,10,.35);background:rgba(201,146,10,.06);padding:1.2rem 1.5rem;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0;">
+          <div id="banner-punto" style="width:8px;height:8px;background:var(--gold);border-radius:50%;"></div>
+          <span style="font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);">Aviso de cambio</span>
+        </div>
+        <p style="font-size:.9rem;color:rgba(248,246,240,.85);line-height:1.5;flex:1;min-width:200px;">A partir del <strong style="color:var(--white);">1 de junio</strong> se elimina el horario de las <strong style="color:var(--white);">16:30h</strong>. El resto de horarios se mantienen sin cambios.</p>
+        <div style="flex-shrink:0;text-align:center;">
+          <div id="banner-contador" style="font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;">--</div>
+          <div style="font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,146,10,.6);">días restantes</div>
+        </div>
+      </div>
+      <div id="banner-barra-wrap" style="margin-top:1rem;height:2px;background:rgba(201,146,10,.15);position:relative;">
+        <div id="banner-barra" style="position:absolute;top:0;left:0;height:100%;background:var(--gold);transition:width 1s ease;width:0%"></div>
+      </div>
+    </div>
+
     <div class="hpg">
       <div>
         <div class="htit">Horario semanal</div>
@@ -683,7 +703,7 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
           <tbody>
             <tr><td style="color:var(--gold);font-weight:600;">9:00</td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td></tr>
             <tr><td style="color:var(--gold);font-weight:600;">10:00</td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tsp">Sparring</span></td></tr>
-            <tr><td style="color:var(--gold);font-weight:600;">16:30</td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tsp">Sparring</span></td></tr>
+            <tr id="fila-1630"><td style="color:var(--gold);font-weight:600;">16:30</td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tsp">Sparring</span></td></tr>
             <tr><td style="color:var(--gold);font-weight:600;">17:30</td><td><span class="tk">Kickboxing</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tk">Kickboxing</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tk">Kickboxing</span></td></tr>
             <tr><td style="color:var(--gold);font-weight:600;">18:30</td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tcl">Clinch</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td></tr>
             <tr><td style="color:var(--gold);font-weight:600;">19:30</td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tm">Muay Thai</span></td><td><span class="tsp">Sparring</span></td></tr>
@@ -695,20 +715,20 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
       <div>
         <div class="htit">Tarifas</div>
         <div class="prl">
-          <div class="prc"><div><div class="prn">Infantil</div><div class="prs">6 a 12 años</div></div><div><div class="pra">45€</div><span class="prp">/ mes</span></div></div>
+          <div class="prc"><div><div class="prn">Infantil</div><div class="prs">6 a 12 años</div></div><div><div class="pra">50€</div><span class="prp">/ mes</span></div></div>
           <div class="prc ft"><div><div class="prn">Adultos</div><div class="prs">Desde 12 años · Más popular</div></div><div><div class="pra">50€</div><span class="prp" style="color:rgba(248,246,240,.4);">/ mes</span></div></div>
-          <div class="prc"><div><div class="prn">Clase personal</div><div class="prs">1 sesión</div></div><div><div class="pra">25€</div><span class="prp">/ clase</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 5 clases</div><div class="prs">Clases personales</div></div><div><div class="pra">115€</div><span class="prp">/ bono</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 10 clases</div><div class="prs">Mejor precio por sesión</div></div><div><div class="pra">200€</div><span class="prp">/ bono</span></div></div>
+          <div class="prc"><div><div class="prn">Clase personal</div><div class="prs">1 sesión</div></div><div><div class="pra">30€</div><span class="prp">/ clase</span></div></div>
+          <div class="prc"><div><div class="prn">Bono 5 clases</div><div class="prs">Clases personales</div></div><div><div class="pra">140€</div><span class="prp">/ bono</span></div></div>
+          <div class="prc"><div><div class="prn">Bono 10 clases</div><div class="prs">Mejor precio por sesión</div></div><div><div class="pra">250€</div><span class="prp">/ bono</span></div></div>
         </div>
         <div class="descfam" onclick="window.open('https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n','_blank')">
           <div class="descrow">
             <div style="font-size:1.4rem;flex-shrink:0;">👨‍👩‍👧</div>
             <div class="desctexts">
               <div class="desctit">Descuento familiar</div>
-              <div class="descsub">Segundo miembro de la familia · Consultar condiciones</div>
+              <div class="descsub">Segundo miembro de la familia · 35% de descuento</div>
             </div>
-            <div class="descpct">-30%</div>
+            <div class="descpct">-35%</div>
           </div>
         </div>
       </div>
@@ -1288,6 +1308,58 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay){
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape') document.querySelectorAll('.modal-overlay.active').forEach(function(m){closeModal(m.id);});
 });
+</script>
+
+<!-- CONTADOR HORARIO JUNIO -->
+<style>
+#fila-1630{transition:opacity .6s ease, transform .6s ease;}
+#fila-1630.fading{opacity:0;transform:translateX(-10px);}
+#banner-punto{animation:puntoPulse 1.4s ease-in-out infinite;}
+@keyframes puntoPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+#banner-horario{animation:bannerFadeIn .6s ease forwards;}
+@keyframes bannerFadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+
+<script>
+(function(){
+  var CAMBIO = new Date('2026-06-01T00:00:00');
+  var INICIO = new Date('2026-05-01T00:00:00');
+  var fila = document.getElementById('fila-1630');
+  var banner = document.getElementById('banner-horario');
+  var contadorEl = document.getElementById('banner-contador');
+  var barraEl = document.getElementById('banner-barra');
+
+  if(!fila) return;
+
+  var hoy = new Date();
+  hoy.setHours(0,0,0,0);
+
+  if(hoy >= CAMBIO){
+    fila.style.display = 'none';
+    return;
+  }
+
+  var diasTotal = Math.round((CAMBIO - INICIO) / (1000*60*60*24));
+  var diasRestantes = Math.ceil((CAMBIO - hoy) / (1000*60*60*24));
+  var progreso = Math.max(0, Math.min(100, ((diasTotal - diasRestantes) / diasTotal) * 100));
+
+  if(banner){
+    banner.style.display = 'block';
+    if(contadorEl) contadorEl.textContent = diasRestantes;
+    if(barraEl){
+      setTimeout(function(){ barraEl.style.width = progreso + '%'; }, 300);
+    }
+  }
+
+  var msRestantes = CAMBIO - new Date();
+  if(msRestantes > 0 && msRestantes < 2147483647){
+    setTimeout(function(){
+      if(banner) banner.style.display = 'none';
+      fila.classList.add('fading');
+      setTimeout(function(){ fila.style.display = 'none'; }, 700);
+    }, msRestantes);
+  }
+})();
 </script>
 </body>
 </html>
