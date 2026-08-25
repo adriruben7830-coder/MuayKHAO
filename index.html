@@ -240,18 +240,18 @@ section{padding:6rem 4rem}
 #scrollbar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gl));z-index:101;transition:width .1s linear}
 
 /* ── REVEAL ON SCROLL ── */
-.clc,.eqc,.gi,.prc,.hstats>div,.st,.slb{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.clc.in-view,.eqc.in-view,.gi.in-view,.prc.in-view,.hstats>div.in-view,.st.in-view,.slb.in-view{opacity:1;transform:translateY(0)}
-.clc:nth-child(1),.eqc:nth-child(1),.gi:nth-child(1),.prc:nth-child(1),.hstats>div:nth-child(1){transition-delay:0ms}
-.clc:nth-child(2),.eqc:nth-child(2),.gi:nth-child(2),.prc:nth-child(2),.hstats>div:nth-child(2){transition-delay:80ms}
-.clc:nth-child(3),.eqc:nth-child(3),.gi:nth-child(3),.prc:nth-child(3),.hstats>div:nth-child(3){transition-delay:160ms}
+.clc,.eqc,.gi,.prc,.pers-card,.askcard,.hstats>div,.st,.slb{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.clc.in-view,.eqc.in-view,.gi.in-view,.prc.in-view,.pers-card.in-view,.askcard.in-view,.hstats>div.in-view,.st.in-view,.slb.in-view{opacity:1;transform:translateY(0)}
+.clc:nth-child(1),.eqc:nth-child(1),.gi:nth-child(1),.prc:nth-child(1),.pers-card:nth-child(1),.hstats>div:nth-child(1){transition-delay:0ms}
+.clc:nth-child(2),.eqc:nth-child(2),.gi:nth-child(2),.prc:nth-child(2),.pers-card:nth-child(2),.hstats>div:nth-child(2){transition-delay:80ms}
+.clc:nth-child(3),.eqc:nth-child(3),.gi:nth-child(3),.prc:nth-child(3),.pers-card:nth-child(3),.hstats>div:nth-child(3){transition-delay:160ms}
 .clc:nth-child(4),.eqc:nth-child(4),.gi:nth-child(4),.prc:nth-child(4),.hstats>div:nth-child(4){transition-delay:240ms}
 .gi:nth-child(5),.prc:nth-child(5){transition-delay:320ms}
 .gi:nth-child(6),.prc:nth-child(6){transition-delay:400ms}
 .gi:nth-child(7),.prc:nth-child(7){transition-delay:480ms}
 .gi:nth-child(8),.prc:nth-child(8){transition-delay:560ms}
 @media(prefers-reduced-motion:reduce){
-  .clc,.eqc,.gi,.prc,.hstats>div,.st,.slb{opacity:1;transform:none;transition:none}
+  .clc,.eqc,.gi,.prc,.pers-card,.askcard,.hstats>div,.st,.slb{opacity:1;transform:none;transition:none}
 }
 
 /* ── MARQUEE TICKER ── */
@@ -277,9 +277,26 @@ section{padding:6rem 4rem}
 @keyframes wa-pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
 @media(prefers-reduced-motion:reduce){.wa-float-ping{animation:none;display:none}}
 @media(max-width:768px){.wa-float{right:1rem;bottom:1rem;width:50px;height:50px}}
-.prgh{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-top:.7rem;padding-top:.7rem;border-top:1px dashed rgba(201,146,10,.25)}
-.prgh:first-child{margin-top:0;padding-top:0;border-top:none}
+.prgh{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-top:.9rem;margin-bottom:.5rem}
 .bononote{margin-top:1rem;background:linear-gradient(135deg,rgba(201,146,10,.1),rgba(201,146,10,.03));border:1px solid rgba(201,146,10,.25);border-left:4px solid var(--gold);padding:.7rem 1rem;font-size:.78rem;color:rgba(248,246,240,.75);line-height:1.5}
+
+/* ── TARIFAS PERSONALES: grid compacto 3 columnas ── */
+.pers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.pers-card{background:var(--nl);border:1px solid rgba(201,146,10,.12);padding:.85rem .75rem}
+.pers-h{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--white)}
+.pers-sub{font-size:.6rem;color:var(--gray);margin-bottom:.6rem}
+.pers-row{display:flex;justify-content:space-between;align-items:baseline;padding:.3rem 0;border-top:1px solid rgba(255,255,255,.05)}
+.pers-row:first-of-type{border-top:none}
+.pers-row span{font-size:.64rem;color:rgba(248,246,240,.55)}
+.pers-row b{font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:700;color:var(--gl)}
+@media(max-width:640px){.pers-grid{grid-template-columns:1fr}}
+
+/* ── TARJETA DE AYUDA (rellena el hueco bajo el horario) ── */
+.askcard{margin-top:1rem;background:linear-gradient(135deg,rgba(201,146,10,.1),rgba(201,146,10,.03));border:1px solid rgba(201,146,10,.3);padding:1rem 1.2rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.9rem}
+.askcard:hover{border-color:var(--gold);transform:translateY(-2px)}
+.askcard-ic{font-size:1.4rem;flex-shrink:0}
+.askcard-tit{font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gl)}
+.askcard-sub{font-size:.78rem;color:rgba(248,246,240,.6);margin-top:.15rem}
 .descfam{margin-top:1.2rem;background:linear-gradient(135deg,rgba(192,37,26,.15),rgba(192,37,26,.05));border:2px solid rgba(192,37,26,.4);padding:1rem 1.2rem;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
 .descfam::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(192,37,26,.08),transparent);animation:shimmer 2s infinite}
 .descfam:hover{border-color:var(--rl);transform:translateY(-2px)}
@@ -848,26 +865,43 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
           </tbody>
         </table>
         <div class="sabnote">🥊 Sábado · Entrenamiento 10:00 – 11:30h</div>
+        <div class="askcard" onclick="window.open('https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20no%20s%C3%A9%20qu%C3%A9%20bono%20de%20clases%20personales%20me%20conviene%2C%20me%20pod%C3%A9is%20ayudar%3F','_blank')">
+          <div class="askcard-ic">💬</div>
+          <div>
+            <div class="askcard-tit">¿No sabes qué bono elegir?</div>
+            <div class="askcard-sub">Escríbenos por WhatsApp y te ayudamos a elegir el tuyo.</div>
+          </div>
+        </div>
       </div>
       <div>
         <div class="htit">Tarifas</div>
         <div class="prl">
           <div class="prc"><div><div class="prn">Infantil</div><div class="prs">6 a 12 años</div></div><div><div class="pra">50€</div><span class="prp">/ mes</span></div></div>
           <div class="prc ft"><div><div class="prn">Adultos</div><div class="prs">Desde 12 años · Más popular</div></div><div><div class="pra">50€</div><span class="prp" style="color:rgba(248,246,240,.4);">/ mes</span></div></div>
-          <div class="prgh">Personales · Individual (1 persona)</div>
-          <div class="prc"><div><div class="prn">1 hora</div><div class="prs">Clase suelta</div></div><div><div class="pra">40€</div><span class="prp">/ clase</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 5 horas</div><div class="prs">Entreno individual</div></div><div><div class="pra">190€</div><span class="prp">/ bono</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 10 horas</div><div class="prs">Individual · mejor precio</div></div><div><div class="pra">350€</div><span class="prp">/ bono</span></div></div>
-
-          <div class="prgh">Personales · Duales (2 personas)</div>
-          <div class="prc"><div><div class="prn">1 hora</div><div class="prs">Clase suelta</div></div><div><div class="pra">60€</div><span class="prp">/ clase</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 5 horas</div><div class="prs">Entreno dual</div></div><div><div class="pra">280€</div><span class="prp">/ bono</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 10 horas</div><div class="prs">Dual · mejor precio</div></div><div><div class="pra">500€</div><span class="prp">/ bono</span></div></div>
-
-          <div class="prgh">Personales · Grupales (3 a 10 personas)</div>
-          <div class="prc"><div><div class="prn">1 hora</div><div class="prs">Clase suelta</div></div><div><div class="pra">100€</div><span class="prp">/ clase</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 5 horas</div><div class="prs">Entreno grupal</div></div><div><div class="pra">460€</div><span class="prp">/ bono</span></div></div>
-          <div class="prc"><div><div class="prn">Bono 10 horas</div><div class="prs">Grupal · mejor precio</div></div><div><div class="pra">900€</div><span class="prp">/ bono</span></div></div>
+        </div>
+        <div class="prgh">Clases personales · individual, dual o grupal</div>
+        <div class="pers-grid">
+          <div class="pers-card">
+            <div class="pers-h">Individual</div>
+            <div class="pers-sub">1 persona</div>
+            <div class="pers-row"><span>1 hora</span><b>40€</b></div>
+            <div class="pers-row"><span>Bono 5h</span><b>190€</b></div>
+            <div class="pers-row"><span>Bono 10h</span><b>350€</b></div>
+          </div>
+          <div class="pers-card">
+            <div class="pers-h">Dual</div>
+            <div class="pers-sub">2 personas</div>
+            <div class="pers-row"><span>1 hora</span><b>60€</b></div>
+            <div class="pers-row"><span>Bono 5h</span><b>280€</b></div>
+            <div class="pers-row"><span>Bono 10h</span><b>500€</b></div>
+          </div>
+          <div class="pers-card">
+            <div class="pers-h">Grupal</div>
+            <div class="pers-sub">3 a 10 personas</div>
+            <div class="pers-row"><span>1 hora</span><b>100€</b></div>
+            <div class="pers-row"><span>Bono 5h</span><b>460€</b></div>
+            <div class="pers-row"><span>Bono 10h</span><b>900€</b></div>
+          </div>
         </div>
         <div class="bononote">⏳ Los bonos de clases personales tienen una validez máxima de <strong style="color:var(--gl);">3 meses</strong> desde la fecha de compra.</div>
         <div class="descfam" onclick="window.open('https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n','_blank')">
@@ -1561,7 +1595,7 @@ document.addEventListener('keydown',function(e){
 <script>
 (function(){
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var targets = document.querySelectorAll('.clc,.eqc,.gi,.prc,.hstats>div,.st,.slb');
+  var targets = document.querySelectorAll('.clc,.eqc,.gi,.prc,.pers-card,.askcard,.hstats>div,.st,.slb');
   if(!targets.length) return;
 
   if(reduceMotion || !('IntersectionObserver' in window)){
