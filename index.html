@@ -236,6 +236,40 @@ section{padding:6rem 4rem}
 .prp{font-size:.7rem;color:var(--gray)}
 .lazyvid{background:var(--nd)}
 
+/* ── SCROLL PROGRESS BAR ── */
+#scrollbar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gl));z-index:101;transition:width .1s linear}
+
+/* ── REVEAL ON SCROLL ── */
+.clc,.eqc,.gi,.prc,.hstats>div,.st,.slb{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.clc.in-view,.eqc.in-view,.gi.in-view,.prc.in-view,.hstats>div.in-view,.st.in-view,.slb.in-view{opacity:1;transform:translateY(0)}
+.clc:nth-child(1),.eqc:nth-child(1),.gi:nth-child(1),.prc:nth-child(1),.hstats>div:nth-child(1){transition-delay:0ms}
+.clc:nth-child(2),.eqc:nth-child(2),.gi:nth-child(2),.prc:nth-child(2),.hstats>div:nth-child(2){transition-delay:80ms}
+.clc:nth-child(3),.eqc:nth-child(3),.gi:nth-child(3),.prc:nth-child(3),.hstats>div:nth-child(3){transition-delay:160ms}
+.clc:nth-child(4),.eqc:nth-child(4),.gi:nth-child(4),.prc:nth-child(4),.hstats>div:nth-child(4){transition-delay:240ms}
+.gi:nth-child(5),.prc:nth-child(5){transition-delay:320ms}
+.gi:nth-child(6),.prc:nth-child(6){transition-delay:400ms}
+.gi:nth-child(7),.prc:nth-child(7){transition-delay:480ms}
+.gi:nth-child(8),.prc:nth-child(8){transition-delay:560ms}
+@media(prefers-reduced-motion:reduce){
+  .clc,.eqc,.gi,.prc,.hstats>div,.st,.slb{opacity:1;transform:none;transition:none}
+}
+
+/* ── MARQUEE TICKER ── */
+.ticker-wrap{overflow:hidden;background:var(--nd);border-top:1px solid rgba(201,146,10,.15);border-bottom:1px solid rgba(201,146,10,.15);padding:.9rem 0;white-space:nowrap}
+.ticker{display:inline-flex;animation:ticker-scroll 32s linear infinite}
+.ticker span{font-family:'Oswald',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,146,10,.75);padding:0 1.5rem;display:inline-flex;align-items:center;gap:1.5rem}
+.ticker span::after{content:'●';color:rgba(201,146,10,.4);font-size:.5rem;margin-left:1.5rem}
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker{animation:none}}
+
+/* ── HERO KEN BURNS ── */
+.hbg img{animation:hero-kenburns 24s ease-in-out infinite alternate}
+@keyframes hero-kenburns{0%{transform:scale(1.08)}100%{transform:scale(1.16) translate(-1%,-1%)}}
+@media(prefers-reduced-motion:reduce){.hbg img{animation:none}}
+
+/* ── CONTADOR NUMERICO ── */
+.sn.counting{font-variant-numeric:tabular-nums}
+
 /* ── WHATSAPP FLOTANTE ── */
 .wa-float{position:fixed;right:1.4rem;bottom:1.4rem;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35);z-index:90;text-decoration:none;transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
@@ -490,6 +524,8 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
 </head>
 <body>
 
+<div id="scrollbar"></div>
+
 <!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="wa-float" aria-label="Escríbenos por WhatsApp">
   <span class="wa-float-ping"></span>
@@ -552,6 +588,14 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
     </div>
   </div>
 </section>
+
+<!-- MARQUEE -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span>🥊 WBC Muay Thai Oficial</span><span>Selección Española</span><span>Muay Thai</span><span>Kickboxing</span><span>Clases desde niños hasta competición</span><span>Primera clase gratis</span>
+    <span>🥊 WBC Muay Thai Oficial</span><span>Selección Española</span><span>Muay Thai</span><span>Kickboxing</span><span>Clases desde niños hasta competición</span><span>Primera clase gratis</span>
+  </div>
+</div>
 
 <!-- NOSOTROS -->
 <section id="nosotros">
@@ -1494,6 +1538,78 @@ document.addEventListener('keydown',function(e){
   }, { rootMargin: '200px 0px' });
 
   videos.forEach(function(v){ io.observe(v); });
+})();
+</script>
+
+<!-- BARRA DE PROGRESO DE SCROLL -->
+<script>
+(function(){
+  var bar = document.getElementById('scrollbar');
+  if(!bar) return;
+  function update(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+<!-- ANIMACIONES AL HACER SCROLL (reveal) + CONTADOR NUMÉRICO -->
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.clc,.eqc,.gi,.prc,.hstats>div,.st,.slb');
+  if(!targets.length) return;
+
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    targets.forEach(function(t){ t.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function(t){ io.observe(t); });
+
+    // Red de seguridad: si algo impide que el observer dispare, el contenido
+    // no debe quedar invisible para siempre.
+    setTimeout(function(){
+      targets.forEach(function(t){ t.classList.add('in-view'); });
+    }, 3000);
+  }
+
+  // Contador numérico para el "+10 años de experiencia"
+  var counters = document.querySelectorAll('.hstats .sn');
+  if(!counters.length || reduceMotion) return;
+  var first = counters[0]; // "+10"
+  var match = first.textContent.match(/^(\+?)(\d+)$/);
+  if(!match) return;
+  var prefix = match[1], target = parseInt(match[2], 10);
+  var done = false;
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !done){
+        done = true;
+        first.classList.add('counting');
+        var start = null, duration = 1200;
+        function step(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts - start) / duration, 1);
+          first.textContent = prefix + Math.round(p * target);
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        cio.unobserve(first);
+      }
+    });
+  }, { threshold: 0.5 });
+  cio.observe(first);
 })();
 </script>
 </body>
