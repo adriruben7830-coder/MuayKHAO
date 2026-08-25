@@ -131,37 +131,30 @@ h1 span{color:var(--gold)}
 .hero3d{position:relative;z-index:1;width:320px;height:320px;display:block;flex-shrink:0;animation:hero3d-float 5s ease-in-out infinite}
 @keyframes hero3d-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* ── HALO ALREDEDOR DEL ESCUDO 3D ── */
+/* ── HALO ALREDEDOR DEL ESCUDO 3D ──
+   Deliberadamente minimo: un resplandor que respira, un unico anillo lento en
+   blanco/plata (acompaña el borde blanco del propio render, no compite con
+   el) y un pulso que se expande de vez en cuando. Nada de destellos sueltos. */
 .badge-aura{position:absolute;inset:0;z-index:0;pointer-events:none}
-.aura-glow{position:absolute;top:50%;left:50%;width:66%;height:66%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(232,184,32,.5),rgba(201,146,10,.16) 55%,transparent 76%);filter:blur(2px);animation:aura-pulse 3.2s ease-in-out infinite}
-
-/* Anillos de pulso expansivo, como el boton de WhatsApp: dan la sensacion de energia radiando */
-.aura-pulse-ring{position:absolute;top:50%;left:50%;width:58%;height:58%;transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(232,184,32,.6);animation:aura-ripple 3.6s cubic-bezier(.2,.7,.3,1) infinite}
-.aura-pulse-ring.p2{animation-delay:1.8s}
-
-.aura-ring{position:absolute;top:50%;left:50%;border-radius:50%;transform:translate(-50%,-50%)}
-.aura-ring.r1{width:100%;height:100%;border:1px dashed rgba(201,146,10,.5);animation:aura-spin 20s linear infinite}
-.aura-ring.r2{width:84%;height:84%;border:1px dotted rgba(232,184,32,.45);animation:aura-spin-rev 26s linear infinite}
-.aura-ring.r3{width:114%;height:114%;border:1px solid rgba(201,146,10,.22);animation:aura-spin 40s linear infinite}
-
-.aura-ring i{position:absolute;border-radius:50%;background:var(--gl);box-shadow:0 0 9px 2px rgba(232,184,32,.85);animation:aura-twinkle 2.2s ease-in-out infinite}
-.aura-ring.r1 i{width:5px;height:5px;margin:-2.5px}
-.aura-ring.r1 i:nth-child(1){top:0%;left:50%;animation-delay:0s}
-.aura-ring.r1 i:nth-child(2){top:50%;left:100%;animation-delay:.5s}
-.aura-ring.r1 i:nth-child(3){top:100%;left:50%;animation-delay:1s}
-.aura-ring.r1 i:nth-child(4){top:50%;left:0%;animation-delay:1.5s}
-.aura-ring.r2 i{width:3.5px;height:3.5px;margin:-1.75px;background:#fff2c9}
-.aura-ring.r2 i:nth-child(1){top:14.6%;left:85.4%;animation-delay:.3s}
-.aura-ring.r2 i:nth-child(2){top:85.4%;left:14.6%;animation-delay:1.3s}
-
-@keyframes aura-pulse{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
-@keyframes aura-ripple{0%{width:52%;height:52%;opacity:.85;border-width:2px}100%{width:135%;height:135%;opacity:0;border-width:.5px}}
+.aura-glow{position:absolute;top:50%;left:50%;width:70%;height:70%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(232,184,32,.32),rgba(201,146,10,.08) 58%,transparent 78%);filter:blur(2px);animation:aura-pulse 4.2s ease-in-out infinite}
+.aura-pulse-ring{position:absolute;top:50%;left:50%;width:60%;height:60%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(245,245,240,.5);animation:aura-ripple 4.8s cubic-bezier(.2,.7,.3,1) infinite}
+.aura-ring{position:absolute;top:50%;left:50%;width:102%;height:102%;border-radius:50%;border:1px dashed rgba(245,245,240,.4);transform:translate(-50%,-50%);animation:aura-spin 46s linear infinite}
+@keyframes aura-pulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+@keyframes aura-ripple{0%{width:56%;height:56%;opacity:.7;border-width:1.5px}100%{width:128%;height:128%;opacity:0;border-width:.5px}}
 @keyframes aura-spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
-@keyframes aura-spin-rev{from{transform:translate(-50%,-50%) rotate(360deg)}to{transform:translate(-50%,-50%) rotate(0deg)}}
-@keyframes aura-twinkle{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
 @media(prefers-reduced-motion:reduce){
   .hero3d{animation:none}
-  .aura-glow,.aura-ring,.aura-pulse-ring,.aura-ring i{animation:none}
+  .aura-glow,.aura-ring,.aura-pulse-ring{animation:none}
+}
+
+/* Etiqueta bajo el escudo: respira en el mismo ritmo que el halo, para que se sienta parte del mismo objeto */
+.badge-label{text-align:center;margin-top:.6rem}
+.badge-label span{position:relative;overflow:hidden;font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,146,10,.85);background:rgba(201,146,10,.06);border:1px solid rgba(201,146,10,.3);padding:.35rem 1rem;display:inline-block;animation:badge-label-glow 4.2s ease-in-out infinite}
+.badge-label span::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:translateX(-100%);animation:shimmer 4.2s ease-in-out infinite}
+@keyframes badge-label-glow{0%,100%{border-color:rgba(201,146,10,.3);box-shadow:0 0 0 rgba(201,146,10,0)}50%{border-color:rgba(201,146,10,.65);box-shadow:0 0 14px rgba(201,146,10,.35)}}
+@media(prefers-reduced-motion:reduce){
+  .badge-label span{animation:none}
+  .badge-label span::before{display:none}
 }
 
 /* ── SECTIONS ── */
@@ -662,16 +655,13 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
       <div class="badge-wrap">
         <div class="badge-aura" aria-hidden="true">
           <span class="aura-glow"></span>
-          <span class="aura-pulse-ring p1"></span>
-          <span class="aura-pulse-ring p2"></span>
-          <span class="aura-ring r3"></span>
-          <span class="aura-ring r1"><i></i><i></i><i></i><i></i></span>
-          <span class="aura-ring r2"><i></i><i></i></span>
+          <span class="aura-pulse-ring"></span>
+          <span class="aura-ring"></span>
         </div>
         <img src="img/hero-badge-3d.webp" width="1100" height="1100" alt="Escudo Muay Khao Reus en 3D" class="hero3d" loading="eager" fetchpriority="high" decoding="async">
       </div>
-      <div style="text-align:center;margin-top:.6rem;">
-        <span style="font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,146,10,0.8);background:rgba(201,146,10,.06);border:1px solid rgba(201,146,10,.25);padding:.35rem 1rem;display:inline-block;">MUAY KHAO REUS · WBC MUAY THAI</span>
+      <div class="badge-label">
+        <span>MUAY KHAO REUS · WBC MUAY THAI</span>
       </div>
     </div>
   </div>
@@ -1741,28 +1731,28 @@ document.addEventListener('keydown',function(e){
   if(!canHover || reduceMotion) return;
 
   // Inclinacion 3D en tarjetas de clases y equipo.
-  // Delegado en el contenedor (no tarjeta por tarjeta): un unico listener que
-  // localiza la tarjeta real bajo el cursor con closest(), asi el efecto es
-  // identico para todas sin depender de en que elemento hijo entro el raton.
-  function attachTilt(container, cardSelector){
-    if(!container) return;
-    var current = null;
-    function reset(){ if(current){ current.style.transform = ''; current = null; } }
-    container.addEventListener('mousemove', function(e){
-      var card = e.target.closest(cardSelector);
-      if(!card){ reset(); return; }
-      if(current && current !== card) current.style.transform = '';
-      current = card;
+  // Un unico listener global que usa elementFromPoint para saber, en cada
+  // frame, exactamente que tarjeta hay bajo el cursor - no depende de sobre
+  // que hijo (foto, texto, video de fondo...) entro el evento ni de que
+  // burbujee correctamente, asi que es identico para las 7 tarjetas.
+  var tiltCards = Array.from(document.querySelectorAll('.eqc, .clc'));
+  if(tiltCards.length){
+    var activeTiltCard = null;
+    function resetTilt(){ if(activeTiltCard){ activeTiltCard.style.transform = ''; activeTiltCard = null; } }
+    document.addEventListener('mousemove', function(e){
+      var atPoint = document.elementFromPoint(e.clientX, e.clientY);
+      var card = atPoint && atPoint.closest('.eqc, .clc');
+      if(!card){ resetTilt(); return; }
+      if(activeTiltCard && activeTiltCard !== card) activeTiltCard.style.transform = '';
+      activeTiltCard = card;
       var lift = card.classList.contains('eqc') ? 'translateY(-4px) ' : '';
       var r = card.getBoundingClientRect();
       var px = (e.clientX - r.left) / r.width - 0.5;
       var py = (e.clientY - r.top) / r.height - 0.5;
       card.style.transform = 'perspective(900px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 7).toFixed(2) + 'deg) ' + lift + 'scale(1.012)';
     });
-    container.addEventListener('mouseleave', reset);
+    document.addEventListener('mouseleave', resetTilt);
   }
-  attachTilt(document.querySelector('.eqg'), '.eqc');
-  attachTilt(document.querySelector('.clg'), '.clc');
 
   // Botones magneticos en las llamadas a la accion
   function magnetic(el, extra){
