@@ -283,7 +283,12 @@ section{padding:6rem 4rem}
 .bononote{margin-top:1rem;background:linear-gradient(135deg,rgba(201,146,10,.1),rgba(201,146,10,.03));border:1px solid rgba(201,146,10,.25);border-left:4px solid var(--gold);padding:.7rem 1rem;font-size:.78rem;color:rgba(248,246,240,.75);line-height:1.5}
 
 /* ── TARIFAS PERSONALES: grid compacto 3 columnas ── */
+.sport-tabs{display:flex;gap:.4rem;margin-bottom:.7rem}
+.sport-tab{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.5rem .9rem;background:transparent;border:1px solid rgba(201,146,10,.3);color:rgba(248,246,240,.65);cursor:pointer;transition:all .25s;flex:1;text-align:center}
+.sport-tab:hover{border-color:var(--gold);color:var(--white)}
+.sport-tab.active{background:var(--gold);border-color:var(--gold);color:var(--nd)}
 .pers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.pers-grid[hidden]{display:none}
 .pers-card{background:var(--nl);border:1px solid rgba(201,146,10,.12);padding:.85rem .75rem}
 .pers-h{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--white)}
 .pers-sub{font-size:.7rem;color:#a6acbb;margin-bottom:.6rem}
@@ -881,8 +886,35 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
           <div class="prc"><div><div class="prn">Infantil</div><div class="prs">6 a 12 años</div></div><div><div class="pra">50€</div><span class="prp">/ mes</span></div></div>
           <div class="prc ft"><div><div class="prn">Adultos</div><div class="prs">Desde 12 años · Más popular</div></div><div><div class="pra">50€</div><span class="prp" style="color:rgba(248,246,240,.4);">/ mes</span></div></div>
         </div>
-        <div class="prgh">Clases personales · Muay Thai o Kickboxing/K1 · individual, dual o grupal</div>
-        <div class="pers-grid">
+        <div class="prgh">Clases personales · individual, dual o grupal</div>
+        <div class="sport-tabs" role="tablist" aria-label="Disciplina de las clases personales">
+          <button type="button" class="sport-tab active" role="tab" aria-selected="true" aria-controls="pers-mt" id="tab-mt" onclick="switchSport('mt')">Muay Thai</button>
+          <button type="button" class="sport-tab" role="tab" aria-selected="false" aria-controls="pers-kb" id="tab-kb" onclick="switchSport('kb')">Kickboxing · K1</button>
+        </div>
+        <div class="pers-grid" id="pers-mt" role="tabpanel" aria-labelledby="tab-mt">
+          <div class="pers-card">
+            <div class="pers-h">Individual</div>
+            <div class="pers-sub">1 persona</div>
+            <div class="pers-row"><span>1 hora</span><b>40€</b></div>
+            <div class="pers-row"><span>Bono 5h</span><b>190€</b></div>
+            <div class="pers-row"><span>Bono 10h</span><b>350€</b></div>
+          </div>
+          <div class="pers-card">
+            <div class="pers-h">Dual</div>
+            <div class="pers-sub">2 personas</div>
+            <div class="pers-row"><span>1 hora</span><b>60€</b></div>
+            <div class="pers-row"><span>Bono 5h</span><b>280€</b></div>
+            <div class="pers-row"><span>Bono 10h</span><b>500€</b></div>
+          </div>
+          <div class="pers-card">
+            <div class="pers-h">Grupal</div>
+            <div class="pers-sub">3 a 10 personas</div>
+            <div class="pers-row"><span>1 hora</span><b>100€</b></div>
+            <div class="pers-row"><span>Bono 5h</span><b>460€</b></div>
+            <div class="pers-row"><span>Bono 10h</span><b>900€</b></div>
+          </div>
+        </div>
+        <div class="pers-grid" id="pers-kb" role="tabpanel" aria-labelledby="tab-kb" hidden>
           <div class="pers-card">
             <div class="pers-h">Individual</div>
             <div class="pers-sub">1 persona</div>
@@ -1373,6 +1405,16 @@ function sf(){
 </div>
 
 <script>
+function switchSport(sport){
+  var tabs = { mt: document.getElementById('tab-mt'), kb: document.getElementById('tab-kb') };
+  var panels = { mt: document.getElementById('pers-mt'), kb: document.getElementById('pers-kb') };
+  ['mt','kb'].forEach(function(key){
+    var active = key === sport;
+    tabs[key].classList.toggle('active', active);
+    tabs[key].setAttribute('aria-selected', active ? 'true' : 'false');
+    panels[key].hidden = !active;
+  });
+}
 function openModal(id){
   document.getElementById(id).classList.add('active');
   document.body.style.overflow='hidden';
