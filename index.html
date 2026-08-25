@@ -81,7 +81,8 @@
 :root{--navy:#0d1b3e;--nl:#132354;--nd:#080f24;--gold:#c9920a;--gl:#e8b820;--red:#c0251a;--rl:#e03020;--teal:#20b2aa;--tl:#4dd9d0;--white:#f8f6f0;--gray:#8a8f9e}
 .videos-nosotros{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 
-html,body{overflow-x:hidden;scroll-behavior:smooth;font-family:'Source Sans 3',sans-serif;background:var(--nd);color:var(--white)}
+html,body{overflow-x:hidden;scroll-behavior:smooth;font-family:'Source Sans 3',sans-serif;background:var(--nd);color:var(--white);cursor:default}
+a,button,[onclick]{cursor:pointer}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.8rem 4rem;background:rgba(13,27,62,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,146,10,.15);transition:background .3s}
@@ -132,21 +133,35 @@ h1 span{color:var(--gold)}
 
 /* ── HALO ALREDEDOR DEL ESCUDO 3D ── */
 .badge-aura{position:absolute;inset:0;z-index:0;pointer-events:none}
-.aura-glow{position:absolute;top:50%;left:50%;width:80%;height:80%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(201,146,10,.42),rgba(201,146,10,.1) 55%,transparent 76%);filter:blur(1px);animation:aura-pulse 3.6s ease-in-out infinite}
+.aura-glow{position:absolute;top:50%;left:50%;width:66%;height:66%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(232,184,32,.5),rgba(201,146,10,.16) 55%,transparent 76%);filter:blur(2px);animation:aura-pulse 3.2s ease-in-out infinite}
+
+/* Anillos de pulso expansivo, como el boton de WhatsApp: dan la sensacion de energia radiando */
+.aura-pulse-ring{position:absolute;top:50%;left:50%;width:58%;height:58%;transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(232,184,32,.6);animation:aura-ripple 3.6s cubic-bezier(.2,.7,.3,1) infinite}
+.aura-pulse-ring.p2{animation-delay:1.8s}
+
 .aura-ring{position:absolute;top:50%;left:50%;border-radius:50%;transform:translate(-50%,-50%)}
-.aura-ring.r1{width:106%;height:106%;border:1px dashed rgba(201,146,10,.45);animation:aura-spin 22s linear infinite}
-.aura-ring.r2{width:88%;height:88%;border:1px dotted rgba(232,184,32,.4);animation:aura-spin-rev 28s linear infinite}
-.aura-ring i{position:absolute;width:5px;height:5px;margin:-2.5px;border-radius:50%;background:var(--gl);box-shadow:0 0 9px 2px rgba(232,184,32,.85)}
-.aura-ring.r1 i:nth-child(1){top:0%;left:50%}
-.aura-ring.r1 i:nth-child(2){top:50%;left:100%}
-.aura-ring.r1 i:nth-child(3){top:100%;left:50%}
-.aura-ring.r1 i:nth-child(4){top:50%;left:0%}
-@keyframes aura-pulse{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:.9;transform:translate(-50%,-50%) scale(1.08)}}
+.aura-ring.r1{width:100%;height:100%;border:1px dashed rgba(201,146,10,.5);animation:aura-spin 20s linear infinite}
+.aura-ring.r2{width:84%;height:84%;border:1px dotted rgba(232,184,32,.45);animation:aura-spin-rev 26s linear infinite}
+.aura-ring.r3{width:114%;height:114%;border:1px solid rgba(201,146,10,.22);animation:aura-spin 40s linear infinite}
+
+.aura-ring i{position:absolute;border-radius:50%;background:var(--gl);box-shadow:0 0 9px 2px rgba(232,184,32,.85);animation:aura-twinkle 2.2s ease-in-out infinite}
+.aura-ring.r1 i{width:5px;height:5px;margin:-2.5px}
+.aura-ring.r1 i:nth-child(1){top:0%;left:50%;animation-delay:0s}
+.aura-ring.r1 i:nth-child(2){top:50%;left:100%;animation-delay:.5s}
+.aura-ring.r1 i:nth-child(3){top:100%;left:50%;animation-delay:1s}
+.aura-ring.r1 i:nth-child(4){top:50%;left:0%;animation-delay:1.5s}
+.aura-ring.r2 i{width:3.5px;height:3.5px;margin:-1.75px;background:#fff2c9}
+.aura-ring.r2 i:nth-child(1){top:14.6%;left:85.4%;animation-delay:.3s}
+.aura-ring.r2 i:nth-child(2){top:85.4%;left:14.6%;animation-delay:1.3s}
+
+@keyframes aura-pulse{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+@keyframes aura-ripple{0%{width:52%;height:52%;opacity:.85;border-width:2px}100%{width:135%;height:135%;opacity:0;border-width:.5px}}
 @keyframes aura-spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
 @keyframes aura-spin-rev{from{transform:translate(-50%,-50%) rotate(360deg)}to{transform:translate(-50%,-50%) rotate(0deg)}}
+@keyframes aura-twinkle{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
 @media(prefers-reduced-motion:reduce){
   .hero3d{animation:none}
-  .aura-glow,.aura-ring{animation:none}
+  .aura-glow,.aura-ring,.aura-pulse-ring,.aura-ring i{animation:none}
 }
 
 /* ── SECTIONS ── */
@@ -174,8 +189,8 @@ section{padding:6rem 4rem}
 /* ── EQUIPO — todas las tarjetas exactamente iguales ── */
 #equipo{background:var(--nd)}
 .eqg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.eqc{background:var(--navy);border:1px solid rgba(201,146,10,.12);overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;display:flex;flex-direction:column}
-.eqc:hover{border-color:rgba(201,146,10,.4);transform:translateY(-4px);box-shadow:0 18px 34px -16px rgba(0,0,0,.55)}
+.eqc{position:relative;background:var(--navy);border:1px solid rgba(201,146,10,.12);overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.eqc:hover{border-color:rgba(201,146,10,.4);transform:translateY(-4px);box-shadow:0 18px 34px -16px rgba(0,0,0,.55);z-index:2}
 .eqc.rc{border-color:rgba(192,37,26,.15)}
 .eqc.rc:hover{border-color:rgba(192,37,26,.45)}
 .eqc.tc{border-color:rgba(32,178,170,.15)}
@@ -223,7 +238,7 @@ section{padding:6rem 4rem}
 #clases{background:var(--nd)}
 .clg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .clc{background:var(--navy);border:1px solid rgba(201,146,10,.15);padding:2.2rem 1.8rem;position:relative;overflow:hidden;isolation:isolate;transition:border-color .3s,transform .35s ease;transform-style:preserve-3d}
-.clc:hover{border-color:rgba(201,146,10,.4)}
+.clc:hover{border-color:rgba(201,146,10,.4);z-index:2}
 .clc.r{border-color:rgba(192,37,26,.2)}
 .clc.r:hover{border-color:rgba(192,37,26,.5)}
 .clnum{font-family:'Oswald',sans-serif;font-size:3.5rem;font-weight:700;color:rgba(201,146,10,.07);line-height:1;margin-bottom:1rem}
@@ -647,8 +662,11 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
       <div class="badge-wrap">
         <div class="badge-aura" aria-hidden="true">
           <span class="aura-glow"></span>
+          <span class="aura-pulse-ring p1"></span>
+          <span class="aura-pulse-ring p2"></span>
+          <span class="aura-ring r3"></span>
           <span class="aura-ring r1"><i></i><i></i><i></i><i></i></span>
-          <span class="aura-ring r2"></span>
+          <span class="aura-ring r2"><i></i><i></i></span>
         </div>
         <img src="img/hero-badge-3d.webp" width="1100" height="1100" alt="Escudo Muay Khao Reus en 3D" class="hero3d" loading="eager" fetchpriority="high" decoding="async">
       </div>
@@ -1722,17 +1740,29 @@ document.addEventListener('keydown',function(e){
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if(!canHover || reduceMotion) return;
 
-  // Inclinacion 3D en tarjetas de clases y equipo
-  document.querySelectorAll('.clc, .eqc').forEach(function(card){
-    var lift = card.classList.contains('eqc') ? 'translateY(-4px) ' : '';
-    card.addEventListener('mousemove', function(e){
+  // Inclinacion 3D en tarjetas de clases y equipo.
+  // Delegado en el contenedor (no tarjeta por tarjeta): un unico listener que
+  // localiza la tarjeta real bajo el cursor con closest(), asi el efecto es
+  // identico para todas sin depender de en que elemento hijo entro el raton.
+  function attachTilt(container, cardSelector){
+    if(!container) return;
+    var current = null;
+    function reset(){ if(current){ current.style.transform = ''; current = null; } }
+    container.addEventListener('mousemove', function(e){
+      var card = e.target.closest(cardSelector);
+      if(!card){ reset(); return; }
+      if(current && current !== card) current.style.transform = '';
+      current = card;
+      var lift = card.classList.contains('eqc') ? 'translateY(-4px) ' : '';
       var r = card.getBoundingClientRect();
       var px = (e.clientX - r.left) / r.width - 0.5;
       var py = (e.clientY - r.top) / r.height - 0.5;
       card.style.transform = 'perspective(900px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 7).toFixed(2) + 'deg) ' + lift + 'scale(1.012)';
     });
-    card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
-  });
+    container.addEventListener('mouseleave', reset);
+  }
+  attachTilt(document.querySelector('.eqg'), '.eqc');
+  attachTilt(document.querySelector('.clg'), '.clc');
 
   // Botones magneticos en las llamadas a la accion
   function magnetic(el, extra){
