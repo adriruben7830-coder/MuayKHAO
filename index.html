@@ -90,6 +90,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nls{display:flex;gap:2rem;list-style:none}
 .nls a{font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,246,240,.65);text-decoration:none;transition:color .25s}
 .nls a:hover{color:var(--gl)}
+.nls a.active{color:var(--gl)}
 .nc{font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:.55rem 1.4rem;text-decoration:none;transition:background .25s}
 .nc:hover{background:var(--gl)}
 .hb{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
@@ -162,7 +163,9 @@ section{padding:6rem 4rem}
 .eqc.tc:hover{border-color:rgba(32,178,170,.45)}
 /* FOTO — altura fija idéntica en las 3 tarjetas */
 .eqp{width:100%;overflow:hidden;flex-shrink:0;background:var(--navy)}
-.eqp img{width:100%;height:auto;display:block;}
+.eqp img{width:100%;height:auto;display:block;filter:grayscale(85%) contrast(1.02);transition:filter .5s ease}
+.eqc:hover .eqp img{filter:grayscale(0) contrast(1)}
+@media(prefers-reduced-motion:reduce){.eqp img{transition:none}}
 .eqb{padding:1.5rem;flex:1;display:flex;flex-direction:column}
 .eqn{font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--white)}
 .eqr{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:.3rem 0 .8rem}
@@ -200,7 +203,7 @@ section{padding:6rem 4rem}
 /* ── CLASES ── */
 #clases{background:var(--nd)}
 .clg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.clc{background:var(--navy);border:1px solid rgba(201,146,10,.15);padding:2.2rem 1.8rem;position:relative;overflow:hidden;isolation:isolate;transition:border-color .3s}
+.clc{background:var(--navy);border:1px solid rgba(201,146,10,.15);padding:2.2rem 1.8rem;position:relative;overflow:hidden;isolation:isolate;transition:border-color .3s,transform .35s ease;transform-style:preserve-3d}
 .clc:hover{border-color:rgba(201,146,10,.4)}
 .clc.r{border-color:rgba(192,37,26,.2)}
 .clc.r:hover{border-color:rgba(192,37,26,.5)}
@@ -237,6 +240,25 @@ section{padding:6rem 4rem}
 .pra{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;color:var(--gl);line-height:1}
 .prp{font-size:.74rem;color:#a6acbb}
 .lazyvid{background:var(--nd)}
+
+/* ── RESPLANDOR AMBIENTAL QUE SIGUE AL CURSOR ── */
+#cursor-glow{position:fixed;top:0;left:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(circle,rgba(201,146,10,.09),transparent 68%);pointer-events:none;z-index:5;mix-blend-mode:screen;transform:translate(var(--gx,-9999px),var(--gy,-9999px));will-change:transform;opacity:0;transition:opacity .4s}
+#cursor-glow.on{opacity:1}
+
+/* ── GALERIA: affordance de zoom ── */
+.gi{cursor:zoom-in;position:relative}
+.gi:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.gi::after{content:'🔍';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(8,15,36,0);opacity:0;transition:opacity .3s,background .3s}
+.gi:hover::after{opacity:.9;background:rgba(8,15,36,.35)}
+
+/* ── LIGHTBOX ── */
+.lightbox-box{background:var(--nd);border:1px solid rgba(201,146,10,.25);max-width:min(92vw,1000px);width:100%;padding:1rem;margin:auto}
+.lightbox-box img{width:100%;height:auto;max-height:78vh;object-fit:contain;display:block}
+.lightbox-caption{margin-top:.9rem;font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gl);text-align:center}
+@media(max-width:768px){.lightbox-box{padding:.6rem}}
+
+/* ── BOTONES MAGNETICOS: que el transform de JS se anime con suavidad ── */
+.nc{transition:background .25s,transform .2s}
 
 /* ── SCROLL PROGRESS BAR ── */
 #scrollbar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gl));z-index:101;transition:width .1s linear}
@@ -549,6 +571,7 @@ footer{background:var(--nd);border-top:1px solid rgba(201,146,10,.1);padding:2.5
 <body>
 
 <div id="scrollbar"></div>
+<div id="cursor-glow" aria-hidden="true"></div>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://api.whatsapp.com/send?phone=34632953530&text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="wa-float" aria-label="Escríbenos por WhatsApp">
@@ -1404,7 +1427,22 @@ function sf(){
   </div>
 </div>
 
+<!-- LIGHTBOX GALERIA -->
+<div class="modal-overlay" id="modal-lightbox">
+  <div class="modal-box lightbox-box">
+    <button class="modal-close" onclick="closeModal('modal-lightbox')">✕</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
 <script>
+function openLightbox(src, alt){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-img').alt = alt;
+  document.getElementById('lightbox-caption').textContent = alt;
+  openModal('modal-lightbox');
+}
 function switchSport(sport){
   var tabs = { mt: document.getElementById('tab-mt'), kb: document.getElementById('tab-kb') };
   var panels = { mt: document.getElementById('pers-mt'), kb: document.getElementById('pers-kb') };
@@ -1592,6 +1630,111 @@ document.addEventListener('keydown',function(e){
     });
   }, { threshold: 0.5 });
   cio.observe(first);
+})();
+</script>
+
+<!-- INTERACTIVIDAD: lightbox de galeria, menu activo al hacer scroll, contador de precios -->
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Lightbox de la galeria: delega el clic/Enter sobre cada .gi, sin duplicar src/alt en el HTML
+  document.querySelectorAll('.gi').forEach(function(gi){
+    gi.setAttribute('tabindex', '0');
+    gi.setAttribute('role', 'button');
+    gi.setAttribute('aria-label', 'Ampliar imagen');
+    function open(){
+      var img = gi.querySelector('img');
+      if(img) openLightbox(img.currentSrc || img.src, img.alt);
+    }
+    gi.addEventListener('click', open);
+    gi.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); }
+    });
+  });
+
+  // Menu activo mientras se hace scroll (scrollspy)
+  var navLinks = Array.from(document.querySelectorAll('.nls a[href^="#"]'));
+  var map = {};
+  navLinks.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var spySections = Array.from(document.querySelectorAll('section[id]')).filter(function(s){ return map[s.id]; });
+  if(spySections.length && 'IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        navLinks.forEach(function(a){ a.classList.remove('active'); });
+        map[entry.target.id].classList.add('active');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    spySections.forEach(function(s){ spy.observe(s); });
+  }
+
+  // Precios que cuentan hacia arriba al entrar en pantalla
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    document.querySelectorAll('.pra, #pers-mt .pers-row b').forEach(function(el){
+      var m = el.textContent.match(/^(\d+)(.*)$/);
+      if(!m) return;
+      var target = parseInt(m[1], 10), suffix = m[2];
+      var pio = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) return;
+          pio.unobserve(el);
+          var start = null, duration = 900;
+          function step(ts){
+            if(!start) start = ts;
+            var p = Math.min((ts - start) / duration, 1);
+            el.textContent = Math.round(p * target) + suffix;
+            if(p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.4 });
+      pio.observe(el);
+    });
+  }
+
+  // El resto (inclinacion 3D, resplandor de cursor, botones magneticos) solo tiene sentido
+  // con raton real y sin preferencia de movimiento reducido
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if(!canHover || reduceMotion) return;
+
+  // Inclinacion 3D en tarjetas de clases y equipo
+  document.querySelectorAll('.clc, .eqc').forEach(function(card){
+    var lift = card.classList.contains('eqc') ? 'translateY(-4px) ' : '';
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'perspective(900px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 7).toFixed(2) + 'deg) ' + lift + 'scale(1.012)';
+    });
+    card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+  });
+
+  // Resplandor ambiental que sigue al cursor
+  var glow = document.getElementById('cursor-glow');
+  if(glow){
+    document.addEventListener('mousemove', function(e){
+      glow.style.setProperty('--gx', e.clientX + 'px');
+      glow.style.setProperty('--gy', e.clientY + 'px');
+      glow.classList.add('on');
+    });
+    document.addEventListener('mouseleave', function(){ glow.classList.remove('on'); });
+  }
+
+  // Botones magneticos en las llamadas a la accion
+  function magnetic(el, extra){
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var mx = (e.clientX - r.left - r.width / 2) * 0.22;
+      var my = (e.clientY - r.top - r.height / 2) * 0.22;
+      el.style.transform = (extra || '') + 'translate(' + mx.toFixed(1) + 'px,' + my.toFixed(1) + 'px)';
+    });
+    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+  }
+  document.querySelectorAll('.bp').forEach(function(el){ magnetic(el, 'translateY(-2px) '); });
+  document.querySelectorAll('.nc').forEach(function(el){ magnetic(el); });
+  var waBtn = document.querySelector('.wa-float');
+  if(waBtn) magnetic(waBtn, 'scale(1.08) ');
 })();
 </script>
 </body>
